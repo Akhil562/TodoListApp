@@ -137,6 +137,23 @@ h2{
 
 
 }
+#list{
+    position: relative;
+    margin-top: 20px;
+    height:350px;
+    overflow-y: auto;
+    padding-right:10px;
+}
+::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-thumb{
+    background:white;
+}
 
 </style>
 </head>
@@ -151,8 +168,8 @@ h2{
     <script>
         let inputBx = document.querySelector('#inputBx');
         let list = document.querySelector('#list');
-        inputBx.addEventListener('keyup',function(event){
-            if (event.key = "Enter"){
+        inputBx.addEventListener("keyup",function(event){
+            if (event.key == "Enter"){
                 additem(this.value)
                 this.value = ""
             }
@@ -165,6 +182,10 @@ h2{
 
               listitem.addEventListener("click",function(){
                   this.classList.toggle('checked');
+              })
+
+              listitem.querySelector("i").addEventListener("click",function(){
+                listitem.remove();
               })
             
               list.appendChild(listitem);
